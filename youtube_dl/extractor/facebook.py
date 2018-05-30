@@ -231,7 +231,7 @@ class FacebookIE(InfoExtractor):
             urls.append(mobj.group('url'))
         # Facebook API embed
         # see https://developers.facebook.com/docs/plugins/embedded-video-player
-        for mobj in re.finditer(r'''(?x)<div[^>]+
+        for mobj in re.finditer(r'''(?x)<(?:div|fb:post)[^>]+
                 class=(?P<q1>[\'"])[^\'"]*\bfb-(?:video|post)\b[^\'"]*(?P=q1)[^>]+
                 data-href=(?P<q2>[\'"])(?P<url>(?:https?:)?//(?:www\.)?facebook.com/.+?)(?P=q2)''', webpage):
             urls.append(mobj.group('url'))
