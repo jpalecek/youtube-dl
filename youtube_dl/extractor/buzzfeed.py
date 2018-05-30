@@ -6,6 +6,7 @@ import re
 
 from .common import InfoExtractor
 from .facebook import FacebookIE
+from .youtube import YoutubeIE
 
 
 class BuzzFeedIE(InfoExtractor):
@@ -57,12 +58,14 @@ class BuzzFeedIE(InfoExtractor):
             'description': 'This gosling knows how to stick a landing.',
         },
         'playlist': [{
-            'md5': '763ca415512f91ca62e4621086900a23',
+            'md5': '2ca4672b84a6a9ab24561c847c8b82dc',
             'info_dict': {
                 'id': '971793786185728',
                 'ext': 'mp4',
                 'title': 'We set up crash pads so that the goslings on our roof would have a safe landi...',
                 'uploader': 'Calgary Outdoor Centre-University of Calgary',
+                'upload_date': '20150511',
+                'timestamp': 1431380091,
             },
         }],
         'add_ie': ['Facebook'],
@@ -88,6 +91,13 @@ class BuzzFeedIE(InfoExtractor):
         entries.extend([
             self.url_result(facebook_url)
             for facebook_url in facebook_urls])
+
+        youtube_a_hrefs = [m.group(1) for m in re.finditer(r'<a\s(?:href=[\'"]([^\'"]+)[\'"]|class=[\'"]([^\'"]+)[\'"]|[^>])*>', webpage)
+                           if m.group(1) and m.group(2) and re.search(r'^https?://(?:[^.]*\.)?youtube\.com', m.group(1)) and 'subbuzz-youtube__thumb' in m.group(2)]
+        entries.extend([
+            self.url_result(youtube_url)
+            for youtube_url in youtube_a_hrefs])
+        
 
         return {
             '_type': 'playlist',
