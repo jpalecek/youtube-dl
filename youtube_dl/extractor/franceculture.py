@@ -12,7 +12,7 @@ from ..utils import (
 class FranceCultureIE(InfoExtractor):
     _VALID_URL = r'https?://(?:www\.)?franceculture\.fr/emissions/(?:[^/]+/)*(?P<id>[^/?#&]+)'
     _TEST = {
-        'url': 'http://www.franceculture.fr/emissions/carnet-nomade/rendez-vous-au-pays-des-geeks',
+        'url': 'https://www.franceculture.fr/emissions/carnet-nomade/rendez-vous-au-pays-des-geeks',
         'info_dict': {
             'id': 'rendez-vous-au-pays-des-geeks',
             'display_id': 'rendez-vous-au-pays-des-geeks',
@@ -20,7 +20,7 @@ class FranceCultureIE(InfoExtractor):
             'title': 'Rendez-vous au pays des geeks',
             'thumbnail': r're:^https?://.*\.jpg$',
             'upload_date': '20140301',
-            'timestamp': 1393642916,
+            'timestamp': 1393700400,
             'vcodec': 'none',
         }
     }
